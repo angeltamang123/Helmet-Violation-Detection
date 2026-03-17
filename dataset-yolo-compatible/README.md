@@ -1,2 +1,2 @@
 ## Dataset Compatible for Yolo Training
-The actual output of ETL for dataset preparation is stored in kaggle workspace. While, the ETL is process is accessible [here]("./dataset-yolo-compatible\velmet-violation-remove-redundant.ipynb")
+The actual output of ETL for dataset preparation is stored in kaggle workspace. While, the ETL is process is accessible [here](./dataset-yolo-compatible\velmet-violation-remove-redundant.ipynb)

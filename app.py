@@ -45,7 +45,7 @@ with st.sidebar:
         
         if file:
             st.session_state.video = file.read()
-            st.session_state.video_name = file.name # Store for the summary
+            st.session_state.video_name = file.name 
             st.rerun()
     
     # Video Loaded 

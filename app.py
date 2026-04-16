@@ -17,8 +17,6 @@ if "current_idx" not in st.session_state:
     st.session_state.current_idx = 0
 if "model_name" not in st.session_state:
     st.session_state.model_name = ""
-if "conf_threshold" not in st.session_state:
-    st.session_state.conf_threshold = 0.5
 if "video_name" not in st.session_state:
     st.session_state.video_name = ""
 
@@ -31,8 +29,7 @@ with st.sidebar:
     # Video Upload and Settings Prompt
     if 'video' not in st.session_state:
         st.subheader("Configuration")
-        model_choice = st.selectbox("Model Engine", ["yolo26", "yolo11"], index=0)
-        st.session_state.conf_threshold = st.slider("Confidence Threshold", 0.0, 1.0, st.session_state.conf_threshold)
+        model_choice = st.selectbox("Model Engine", ["yolo26", "yolo11"], index=1)
         st.session_state.model_path = f"{model_choice}n_best.pt"
         st.session_state.model_name = "YOLO11 Nano" if model_choice == "yolo11" else "YOLO26 Nano"
 
@@ -52,7 +49,6 @@ with st.sidebar:
     else:
         # Displaying the parameters used
         st.info(f"**Model:** {st.session_state.model_name}")
-        st.info(f"**Confidence Threshold:** {st.session_state.conf_threshold}")
         st.write(f"**File:** `{st.session_state.video_name}`")
         
         with st.expander("View Video"):
@@ -100,7 +96,7 @@ if 'video' in st.session_state and not st.session_state.processed:
         if frame_count % 3 != 0: 
             continue 
 
-        results = model.track(frame, persist=True, conf=st.session_state.conf_threshold, verbose=False)
+        results = model.track(frame, persist=True, conf=0.4 if st.session_state.model_name == 'YOLO11 Nano' else 0.401, verbose=False)
         
         if results[0].boxes.id is not None:
             boxes = results[0].boxes.xyxy.cpu().numpy()

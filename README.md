@@ -5,6 +5,8 @@ This application is an intellignet system designed to identify motorcycle helmet
 ---
 
 ## 1. System Requirements & Libraries
+The user needs to download the zip file for the intelligent system. This folder should at least contain four files: model files for the two models, the source code and the text file to download required libraries with few python commands.
+ 
 The following libraries are required to run the application. These handle neural network inference, image processing, and the dashboard interface.
 
 * **ultralytics**: The core engine for YOLO11/YOLO26 object detection and tracking.
